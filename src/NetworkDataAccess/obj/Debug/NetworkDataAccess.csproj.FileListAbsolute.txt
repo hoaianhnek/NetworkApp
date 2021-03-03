@@ -1,0 +1,12 @@
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\NetworkDataAccess.dll.config
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\NetworkDataAccess.dll
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\NetworkDataAccess.pdb
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\EntityFramework.dll
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\EntityFramework.xml
+D:\Học tập\Khóa luận\NetworkDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Học tập\Khóa luận\NetworkDataAccess\obj\Debug\NetworkDataAccess.csprojAssemblyReference.cache
+D:\Học tập\Khóa luận\NetworkDataAccess\obj\Debug\NetworkDataAccess.csproj.CoreCompileInputs.cache
+D:\Học tập\Khóa luận\NetworkDataAccess\obj\Debug\NetworkDataAccess.csproj.CopyComplete
+D:\Học tập\Khóa luận\NetworkDataAccess\obj\Debug\NetworkDataAccess.dll
+D:\Học tập\Khóa luận\NetworkDataAccess\obj\Debug\NetworkDataAccess.pdb
