@@ -1,17 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBNetworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="DMCH">
-    <Key>
-      <PropertyRef Name="MSCH" />
-    </Key>
-    <Property Name="MSCH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="TENCH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="DIACHI" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityContainer Name="DBNetworkEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="DMCHes" EntityType="Self.DMCH" />
     <EntitySet Name="tests" EntityType="DBNetworkModel.test" />
+    <EntitySet Name="Users" EntityType="DBNetworkModel.User" />
   </EntityContainer>
   <EntityType Name="test">
     <Key>
@@ -19,5 +10,17 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="test1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusCurrent" Type="Int32" />
+    <Property Name="TimeOnline" Type="DateTime" Precision="0" />
   </EntityType>
 </Schema>

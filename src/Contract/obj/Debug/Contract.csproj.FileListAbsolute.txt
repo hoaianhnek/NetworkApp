@@ -1,0 +1,6 @@
+D:\Học tập\Khóa luận\NetworkApp\src\Contract\bin\Debug\Contract.dll
+D:\Học tập\Khóa luận\NetworkApp\src\Contract\bin\Debug\Contract.pdb
+D:\Học tập\Khóa luận\NetworkApp\src\Contract\obj\Debug\Contract.csprojAssemblyReference.cache
+D:\Học tập\Khóa luận\NetworkApp\src\Contract\obj\Debug\Contract.csproj.CoreCompileInputs.cache
+D:\Học tập\Khóa luận\NetworkApp\src\Contract\obj\Debug\Contract.dll
+D:\Học tập\Khóa luận\NetworkApp\src\Contract\obj\Debug\Contract.pdb

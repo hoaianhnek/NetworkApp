@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DBNetworkModelStoreContainer" CdmEntityContainer="DBNetworkEntities">
-    <EntitySetMapping Name="DMCHes">
-      <EntityTypeMapping TypeName="DBNetworkModel.DMCH">
-        <MappingFragment StoreEntitySet="DMCH">
-          <ScalarProperty Name="MSCH" ColumnName="MSCH" />
-          <ScalarProperty Name="TENCH" ColumnName="TENCH" />
-          <ScalarProperty Name="SDT" ColumnName="SDT" />
-          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tests">
       <EntityTypeMapping TypeName="DBNetworkModel.test">
         <MappingFragment StoreEntitySet="test">
           <ScalarProperty Name="test1" ColumnName="test" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBNetworkModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="TimeOnline" ColumnName="TimeOnline" />
+          <ScalarProperty Name="StatusCurrent" ColumnName="StatusCurrent" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="About" ColumnName="About" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

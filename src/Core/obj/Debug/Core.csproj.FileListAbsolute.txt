@@ -1,0 +1,6 @@
+D:\Học tập\Khóa luận\NetworkApp\src\Core\bin\Debug\Core.dll
+D:\Học tập\Khóa luận\NetworkApp\src\Core\bin\Debug\Core.pdb
+D:\Học tập\Khóa luận\NetworkApp\src\Core\obj\Debug\Core.csprojAssemblyReference.cache
+D:\Học tập\Khóa luận\NetworkApp\src\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+D:\Học tập\Khóa luận\NetworkApp\src\Core\obj\Debug\Core.dll
+D:\Học tập\Khóa luận\NetworkApp\src\Core\obj\Debug\Core.pdb

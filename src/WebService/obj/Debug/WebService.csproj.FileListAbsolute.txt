@@ -182,3 +182,12 @@ D:\Học tập\Khóa luận\NetworkApp\src\WebService\obj\Debug\WebService.cspro
 D:\Học tập\Khóa luận\NetworkApp\src\WebService\obj\Debug\WebService.csproj.CopyComplete
 D:\Học tập\Khóa luận\NetworkApp\src\WebService\obj\Debug\WebService.dll
 D:\Học tập\Khóa luận\NetworkApp\src\WebService\obj\Debug\WebService.pdb
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\Contract.dll
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\Contract.pdb
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\Core.dll
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\Core.pdb
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\log4net.dll
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\log4net.xml
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Web.Cors.dll
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Web.Http.Cors.dll
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Web.Http.Cors.xml

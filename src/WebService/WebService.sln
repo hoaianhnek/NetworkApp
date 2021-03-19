@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkDataAccess", "..\NetworkDataAccess\NetworkDataAccess.csproj", "{00D3A8B2-F2BE-458A-A5DE-7676A8E73863}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "..\Contract\Contract.csproj", "{EC35900A-55A6-452A-9FD3-94C283EF2A1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "..\Core\Core.csproj", "{632C7C34-93C7-4912-A110-131549EAD36A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{00D3A8B2-F2BE-458A-A5DE-7676A8E73863}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D3A8B2-F2BE-458A-A5DE-7676A8E73863}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D3A8B2-F2BE-458A-A5DE-7676A8E73863}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC35900A-55A6-452A-9FD3-94C283EF2A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC35900A-55A6-452A-9FD3-94C283EF2A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC35900A-55A6-452A-9FD3-94C283EF2A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC35900A-55A6-452A-9FD3-94C283EF2A1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{632C7C34-93C7-4912-A110-131549EAD36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{632C7C34-93C7-4912-A110-131549EAD36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{632C7C34-93C7-4912-A110-131549EAD36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{632C7C34-93C7-4912-A110-131549EAD36A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,7 +25,7 @@ namespace NetworkDataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DMCH> DMCHes { get; set; }
         public virtual DbSet<test> tests { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
