@@ -152,5 +152,41 @@ namespace WebService.DataProvider
                 };
             }
         }
+
+        public Response<string> UpdateCoverImage(CoverImageProfileDto request)
+        {
+            using (DBNetworkEntities entities = new DBNetworkEntities())
+            {
+                //uploads image
+                var imagePath = ImageUploader.UploadImage(Base64ImageUploader.GenerateImageFileName(request.Id.ToString()),
+                    request.CoverImage, NImageType.CoverImage.GetDescription());
+                var imageLink = imagePath.OrginalImage;
+                var user = entities.Users.Where(u => u.Id == request.Id).FirstOrDefault();
+                user.CoverImage = imageLink;
+                entities.SaveChanges();
+                return new Response<string>
+                {
+                    Dto = imageLink,
+                    ResponseCode = NResponseStatus.Ok,
+                    Message = NResponseStatus.Ok.GetDescription()
+                };
+            }
+        }
+
+        public Response<string> UpdateAboutProfile(AboutProfileDto request)
+        {
+            using (DBNetworkEntities entities = new DBNetworkEntities())
+            {
+                var user = entities.Users.Where(u => u.Id == request.Id).FirstOrDefault();
+                user.About = request.About;
+                entities.SaveChanges();
+                return new Response<string>
+                {
+                    Dto = request.About,
+                    ResponseCode = NResponseStatus.Ok,
+                    Message = NResponseStatus.Ok.GetDescription()
+                };
+            }
+        }
     }
 }

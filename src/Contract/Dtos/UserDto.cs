@@ -31,4 +31,14 @@ namespace Contract.Dtos
         public int Id { get; set; }
         public string Avatar { get; set; }
     }
+    public class CoverImageProfileDto
+    {
+        public int Id { get; set; }
+        public string CoverImage { get; set; }
+    }
+    public class AboutProfileDto
+    {
+        public int Id { get; set; }
+        public string About { get; set; }
+    }
 }

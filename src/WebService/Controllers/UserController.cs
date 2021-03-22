@@ -101,7 +101,7 @@ namespace WebService.Controllers
             }
         }
     
-        [HttpPost]
+        [HttpPut]
         [Route("users/updateavatar")]
         public IHttpActionResult UpdateAvatar(AvatarProfileDto request)
         {
@@ -110,6 +110,46 @@ namespace WebService.Controllers
                 var result = _userProvider.UpdateAvatar(request);
                 return Ok(result);
             } catch(Exception e)
+            {
+                return Ok(new Response<string>
+                {
+                    Dto = null,
+                    ResponseCode = NResponseStatus.NoData,
+                    Message = NResponseStatus.NoData.GetDescription()
+                });
+            }
+        }
+    
+        [HttpPut]
+        [Route("users/updatecover")]
+        public IHttpActionResult UpdateCoverImage(CoverImageProfileDto request)
+        {
+            try
+            {
+                var result = _userProvider.UpdateCoverImage(request);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return Ok(new Response<string>
+                {
+                    Dto = null,
+                    ResponseCode = NResponseStatus.NoData,
+                    Message = NResponseStatus.NoData.GetDescription()
+                });
+            }
+        }
+    
+        [HttpPut]
+        [Route("users/updateabout")]
+        public IHttpActionResult UpdateAboutProfile(AboutProfileDto request)
+        {
+            try
+            {
+                var result = _userProvider.UpdateAboutProfile(request);
+                return Ok(result);
+            }
+            catch (Exception e)
             {
                 return Ok(new Response<string>
                 {

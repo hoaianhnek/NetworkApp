@@ -175,6 +175,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Images\Avatar\" />
+    <Folder Include="Uploads\Images\CoverImage\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
