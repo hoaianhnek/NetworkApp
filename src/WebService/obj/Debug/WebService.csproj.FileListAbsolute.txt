@@ -191,3 +191,4 @@ D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\log4net.xml
 D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Web.Cors.dll
 D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Web.Http.Cors.dll
 D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Web.Http.Cors.xml
+D:\Học tập\Khóa luận\NetworkApp\src\WebService\bin\System.Drawing.Common.dll

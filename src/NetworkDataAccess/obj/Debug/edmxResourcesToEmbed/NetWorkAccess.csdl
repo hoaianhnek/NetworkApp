@@ -3,6 +3,7 @@
   <EntityContainer Name="DBNetworkEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tests" EntityType="DBNetworkModel.test" />
     <EntitySet Name="Users" EntityType="DBNetworkModel.User" />
+    <EntitySet Name="sysdiagrams" EntityType="DBNetworkModel.sysdiagram" />
   </EntityContainer>
   <EntityType Name="test">
     <Key>
@@ -22,5 +23,17 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="StatusCurrent" Type="Int32" />
     <Property Name="TimeOnline" Type="DateTime" Precision="0" />
+    <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CoverImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
 </Schema>

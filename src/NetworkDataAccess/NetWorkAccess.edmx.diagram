@@ -7,6 +7,7 @@
       <Diagram DiagramId="7afe0ce9e89440b6b3431a1ad3803ac5" Name="Diagram1">
         <EntityTypeShape EntityType="DBNetworkModel.test" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DBNetworkModel.User" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBNetworkModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

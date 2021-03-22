@@ -100,5 +100,24 @@ namespace WebService.Controllers
                 });
             }
         }
+    
+        [HttpPost]
+        [Route("users/updateavatar")]
+        public IHttpActionResult UpdateAvatar(AvatarProfileDto request)
+        {
+            try
+            {
+                var result = _userProvider.UpdateAvatar(request);
+                return Ok(result);
+            } catch(Exception e)
+            {
+                return Ok(new Response<string>
+                {
+                    Dto = null,
+                    ResponseCode = NResponseStatus.NoData,
+                    Message = NResponseStatus.NoData.GetDescription()
+                });
+            }
+        }
     }
 }

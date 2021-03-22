@@ -21,5 +21,7 @@ namespace NetworkDataAccess
         public string Password { get; set; }
         public Nullable<int> StatusCurrent { get; set; }
         public Nullable<System.DateTime> TimeOnline { get; set; }
+        public string Avatar { get; set; }
+        public string CoverImage { get; set; }
     }
 }

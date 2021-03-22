@@ -22,7 +22,9 @@ namespace WebService.DataProvider
                     Password = request.Password,
                     UserName = request.UserName,
                     StatusCurrent = 1,
-                    TimeOnline = DateTime.Now
+                    TimeOnline = DateTime.Now,
+                    Avatar = Utils.GetAppSettingBaseURL() + "/" + SharedPreferences.ImageUploadFolder + "/" + Utils.GetDefaultUserAvatar(),
+                    CoverImage = Utils.GetAppSettingBaseURL() + "/" + SharedPreferences.ImageUploadFolder + "/" + Utils.GetDefaultUserCoverImage()
                 };
                 entities.Users.Add(user);
                 entities.SaveChanges();
@@ -83,7 +85,9 @@ namespace WebService.DataProvider
                         {
                             Id = user.Id,
                             UserName = user.UserName,
-                            MobilePhone = user.MobilePhone
+                            MobilePhone = user.MobilePhone,
+                            About = user.About,
+                            Avatar = user.Avatar
                         },
                         ResponseCode = NResponseStatus.Ok,
                         Message = NResponseStatus.Ok.GetDescription()
@@ -117,14 +121,36 @@ namespace WebService.DataProvider
                         {
                             Id = data.Id,
                             MobilePhone = data.MobilePhone,
-                            UserName = data.UserName                          
+                            UserName = data.UserName,
+                            About = data.About,
+                            Avatar = data.Avatar,
+                            CoverImage = data.CoverImage
                         },
                         ResponseCode = NResponseStatus.Ok,
                         Message = NResponseStatus.Ok.GetDescription()
                     };
                 }
             }
-            return new Response<UserDto>();
+        }
+    
+        public Response<string> UpdateAvatar(AvatarProfileDto request)
+        {
+            using (DBNetworkEntities entities = new DBNetworkEntities())
+            {
+                //uploads image
+                var imagePath = ImageUploader.UploadImage(Base64ImageUploader.GenerateImageFileName(request.Id.ToString()),
+                    request.Avatar, NImageType.Avatar.GetDescription());
+                var imageLink = imagePath.OrginalImage;
+                var user = entities.Users.Where(u => u.Id == request.Id).FirstOrDefault();
+                user.Avatar = imageLink;
+                entities.SaveChanges();
+                return new Response<string>
+                {
+                    Dto = imageLink,
+                    ResponseCode = NResponseStatus.Ok,
+                    Message = NResponseStatus.Ok.GetDescription()
+                };
+            }
         }
     }
 }

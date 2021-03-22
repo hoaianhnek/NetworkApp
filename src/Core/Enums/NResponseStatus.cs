@@ -19,6 +19,8 @@ namespace Core.Enums
         [Description("User existed")] UserExisted = 40111,
         [Description("Could not authenticate you")] Unauthorized = 40112,
         //400
-        [Description("Cannot find resource to process")] NotFoundResourceToProcess = 40010
+        [Description("Cannot find resource to process")] NotFoundResourceToProcess = 40010,
+        [Description("The Image size must be less than 3MB")] MaximizeImageSize = 40011,
+        [Description("Base64 string is malformed")] Base64StringIsMalformed = 40012
     }
 }
