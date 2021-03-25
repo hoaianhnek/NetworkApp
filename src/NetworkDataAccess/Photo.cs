@@ -12,25 +12,22 @@ namespace NetworkDataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Photo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Photo()
         {
             this.PostUsers = new HashSet<PostUser>();
         }
     
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public string MobilePhone { get; set; }
-        public string About { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> StatusCurrent { get; set; }
-        public Nullable<System.DateTime> TimeOnline { get; set; }
-        public string Avatar { get; set; }
-        public string CoverImage { get; set; }
+        public int PostId { get; set; }
+        public string ImagePath { get; set; }
+        public Nullable<int> IdAlbum { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PostUser> PostUsers { get; set; }
+        public virtual PostUser PostUser { get; set; }
+        public virtual Ablum Ablum { get; set; }
     }
 }

@@ -27,6 +27,8 @@ namespace NetworkDataAccess
     
         public virtual DbSet<test> tests { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<PostUser> PostUsers { get; set; }
+        public virtual DbSet<Ablum> Ablums { get; set; }
     }
 }

@@ -151,8 +151,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DataProvider\PostProvider.cs" />
     <Compile Include="DataProvider\UserProvider.cs" />
     <Compile Include="DataValidator\ValidatorHelper.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,6 +178,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Images\Avatar\" />
     <Folder Include="Uploads\Images\CoverImage\" />
+    <Folder Include="Uploads\Images\Post\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

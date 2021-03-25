@@ -13,4 +13,10 @@ namespace Core.Contract
         public string Message { get; set; }
         public NResponseStatus ResponseCode { get; set; }
     }
+    public class ResponseList<TTypeDto>
+    {
+        public List<TTypeDto> Dtos { get; set; }
+        public string Message { get; set; }
+        public NResponseStatus ResponseCode { get; set; }
+    }
 }

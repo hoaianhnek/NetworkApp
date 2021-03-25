@@ -5,15 +5,30 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DBNetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Ablum">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="ImagePath" Type="text" />
+          <Property Name="IdAlbum" Type="int" />
+        </EntityType>
+        <EntityType Name="PostUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="UploadDate" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="test">
           <Key>
@@ -36,10 +51,60 @@
           <Property Name="Avatar" Type="varchar" MaxLength="255" />
           <Property Name="CoverImage" Type="varchar" MaxLength="255" />
         </EntityType>
+        <Association Name="FK_Photo_Ablum">
+          <End Role="Ablum" Type="Self.Ablum" Multiplicity="0..1" />
+          <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ablum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="IdAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photo_PostUser1">
+          <End Role="PostUser" Type="Self.PostUser" Multiplicity="1" />
+          <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="PostUser" Type="Self.PostUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBNetworkModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ablum" EntityType="Self.Ablum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostUser" EntityType="Self.PostUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Photo_Ablum" Association="Self.FK_Photo_Ablum">
+            <End Role="Ablum" EntitySet="Ablum" />
+            <End Role="Photo" EntitySet="Photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photo_PostUser1" Association="Self.FK_Photo_PostUser1">
+            <End Role="PostUser" EntitySet="PostUser" />
+            <End Role="Photo" EntitySet="Photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUser_User" Association="Self.FK_PostUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="PostUser" EntitySet="PostUser" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -48,7 +113,25 @@
         <EntityContainer Name="DBNetworkEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tests" EntityType="DBNetworkModel.test" />
           <EntitySet Name="Users" EntityType="DBNetworkModel.User" />
-          <EntitySet Name="sysdiagrams" EntityType="DBNetworkModel.sysdiagram" />
+          <EntitySet Name="Photos" EntityType="DBNetworkModel.Photo" />
+          <EntitySet Name="PostUsers" EntityType="DBNetworkModel.PostUser" />
+          <AssociationSet Name="FK_PostUser_Photo" Association="DBNetworkModel.FK_PostUser_Photo">
+            <End Role="Photo" EntitySet="Photos" />
+            <End Role="PostUser" EntitySet="PostUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostUser_User" Association="DBNetworkModel.FK_PostUser_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="PostUser" EntitySet="PostUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photo_PostUser1" Association="DBNetworkModel.FK_Photo_PostUser1">
+            <End Role="PostUser" EntitySet="PostUsers" />
+            <End Role="Photo" EntitySet="Photos" />
+          </AssociationSet>
+          <EntitySet Name="Ablums" EntityType="DBNetworkModel.Ablum" />
+          <AssociationSet Name="FK_Photo_Ablum" Association="DBNetworkModel.FK_Photo_Ablum">
+            <End Role="Ablum" EntitySet="Ablums" />
+            <End Role="Photo" EntitySet="Photos" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="test">
           <Key>
@@ -70,17 +153,88 @@
           <Property Name="TimeOnline" Type="DateTime" Precision="0" />
           <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="CoverImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PostUsers" Relationship="DBNetworkModel.FK_PostUser_User" FromRole="User" ToRole="PostUser" />
         </EntityType>
-        <EntityType Name="sysdiagram">
+        <EntityType Name="Photo">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PostUsers" Relationship="DBNetworkModel.FK_PostUser_Photo" FromRole="Photo" ToRole="PostUser" />
+          <NavigationProperty Name="PostUser" Relationship="DBNetworkModel.FK_Photo_PostUser1" FromRole="Photo" ToRole="PostUser" />
+          <Property Name="IdAlbum" Type="Int32" />
+          <NavigationProperty Name="Ablum" Relationship="DBNetworkModel.FK_Photo_Ablum" FromRole="Photo" ToRole="Ablum" />
         </EntityType>
+        <EntityType Name="PostUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UploadDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Photo" Relationship="DBNetworkModel.FK_PostUser_Photo" FromRole="PostUser" ToRole="Photo" />
+          <NavigationProperty Name="User" Relationship="DBNetworkModel.FK_PostUser_User" FromRole="PostUser" ToRole="User" />
+          <NavigationProperty Name="Photos" Relationship="DBNetworkModel.FK_Photo_PostUser1" FromRole="PostUser" ToRole="Photo" />
+        </EntityType>
+        <Association Name="FK_PostUser_Photo">
+          <End Type="DBNetworkModel.Photo" Role="Photo" Multiplicity="1" />
+          <End Type="DBNetworkModel.PostUser" Role="PostUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostUser_User">
+          <End Type="DBNetworkModel.User" Role="User" Multiplicity="1" />
+          <End Type="DBNetworkModel.PostUser" Role="PostUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photo_PostUser1">
+          <End Type="DBNetworkModel.PostUser" Role="PostUser" Multiplicity="1" />
+          <End Type="DBNetworkModel.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ablum">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Photos" Relationship="DBNetworkModel.FK_Photo_Ablum" FromRole="Ablum" ToRole="Photo" />
+        </EntityType>
+        <Association Name="FK_Photo_Ablum">
+          <End Type="DBNetworkModel.Ablum" Role="Ablum" Multiplicity="0..1" />
+          <End Type="DBNetworkModel.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ablum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="IdAlbum" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -110,14 +264,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DBNetworkModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="DBNetworkModel.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="IdAlbum" ColumnName="IdAlbum" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostUsers">
+            <EntityTypeMapping TypeName="DBNetworkModel.PostUser">
+              <MappingFragment StoreEntitySet="PostUser">
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ablums">
+            <EntityTypeMapping TypeName="DBNetworkModel.Ablum">
+              <MappingFragment StoreEntitySet="Ablum">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

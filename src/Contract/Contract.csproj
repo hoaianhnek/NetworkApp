@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\PhotoDto.cs" />
+    <Compile Include="Dtos\PostDto.cs" />
     <Compile Include="Dtos\SimpleValueDto.cs" />
     <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,7 +3,25 @@
   <EntityContainer Name="DBNetworkEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tests" EntityType="DBNetworkModel.test" />
     <EntitySet Name="Users" EntityType="DBNetworkModel.User" />
-    <EntitySet Name="sysdiagrams" EntityType="DBNetworkModel.sysdiagram" />
+    <EntitySet Name="Photos" EntityType="DBNetworkModel.Photo" />
+    <EntitySet Name="PostUsers" EntityType="DBNetworkModel.PostUser" />
+    <AssociationSet Name="FK_PostUser_Photo" Association="DBNetworkModel.FK_PostUser_Photo">
+      <End Role="Photo" EntitySet="Photos" />
+      <End Role="PostUser" EntitySet="PostUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostUser_User" Association="DBNetworkModel.FK_PostUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PostUser" EntitySet="PostUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Photo_PostUser1" Association="DBNetworkModel.FK_Photo_PostUser1">
+      <End Role="PostUser" EntitySet="PostUsers" />
+      <End Role="Photo" EntitySet="Photos" />
+    </AssociationSet>
+    <EntitySet Name="Ablums" EntityType="DBNetworkModel.Ablum" />
+    <AssociationSet Name="FK_Photo_Ablum" Association="DBNetworkModel.FK_Photo_Ablum">
+      <End Role="Ablum" EntitySet="Ablums" />
+      <End Role="Photo" EntitySet="Photos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="test">
     <Key>
@@ -25,15 +43,86 @@
     <Property Name="TimeOnline" Type="DateTime" Precision="0" />
     <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="CoverImage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PostUsers" Relationship="DBNetworkModel.FK_PostUser_User" FromRole="User" ToRole="PostUser" />
   </EntityType>
-  <EntityType Name="sysdiagram">
+  <EntityType Name="Photo">
     <Key>
-      <PropertyRef Name="diagram_id" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostId" Type="Int32" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PostUsers" Relationship="DBNetworkModel.FK_PostUser_Photo" FromRole="Photo" ToRole="PostUser" />
+    <NavigationProperty Name="PostUser" Relationship="DBNetworkModel.FK_Photo_PostUser1" FromRole="Photo" ToRole="PostUser" />
+    <Property Name="IdAlbum" Type="Int32" />
+    <NavigationProperty Name="Ablum" Relationship="DBNetworkModel.FK_Photo_Ablum" FromRole="Photo" ToRole="Ablum" />
   </EntityType>
+  <EntityType Name="PostUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UploadDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Photo" Relationship="DBNetworkModel.FK_PostUser_Photo" FromRole="PostUser" ToRole="Photo" />
+    <NavigationProperty Name="User" Relationship="DBNetworkModel.FK_PostUser_User" FromRole="PostUser" ToRole="User" />
+    <NavigationProperty Name="Photos" Relationship="DBNetworkModel.FK_Photo_PostUser1" FromRole="PostUser" ToRole="Photo" />
+  </EntityType>
+  <Association Name="FK_PostUser_Photo">
+    <End Type="DBNetworkModel.Photo" Role="Photo" Multiplicity="1" />
+    <End Type="DBNetworkModel.PostUser" Role="PostUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Photo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostUser_User">
+    <End Type="DBNetworkModel.User" Role="User" Multiplicity="1" />
+    <End Type="DBNetworkModel.PostUser" Role="PostUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Photo_PostUser1">
+    <End Type="DBNetworkModel.PostUser" Role="PostUser" Multiplicity="1" />
+    <End Type="DBNetworkModel.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Ablum">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Photos" Relationship="DBNetworkModel.FK_Photo_Ablum" FromRole="Ablum" ToRole="Photo" />
+  </EntityType>
+  <Association Name="FK_Photo_Ablum">
+    <End Type="DBNetworkModel.Ablum" Role="Ablum" Multiplicity="0..1" />
+    <End Type="DBNetworkModel.Photo" Role="Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ablum">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="IdAlbum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

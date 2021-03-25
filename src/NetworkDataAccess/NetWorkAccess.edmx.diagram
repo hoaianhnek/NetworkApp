@@ -7,7 +7,13 @@
       <Diagram DiagramId="7afe0ce9e89440b6b3431a1ad3803ac5" Name="Diagram1">
         <EntityTypeShape EntityType="DBNetworkModel.test" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DBNetworkModel.User" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DBNetworkModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBNetworkModel.Photo" Width="1.5" PointX="4.875" PointY="2.5" />
+        <EntityTypeShape EntityType="DBNetworkModel.PostUser" Width="1.5" PointX="7.125" PointY="0.5" />
+        <AssociationConnector Association="DBNetworkModel.FK_PostUser_Photo" />
+        <AssociationConnector Association="DBNetworkModel.FK_PostUser_User" />
+        <AssociationConnector Association="DBNetworkModel.FK_Photo_PostUser1" />
+        <EntityTypeShape EntityType="DBNetworkModel.Ablum" Width="1.5" PointX="3.125" PointY="4.875" />
+        <AssociationConnector Association="DBNetworkModel.FK_Photo_Ablum" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
